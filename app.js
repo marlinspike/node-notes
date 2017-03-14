@@ -6,22 +6,25 @@ const yargs = require('yargs');
 const _=require('lodash');
 const notes = require('./notes.js');
 
-console.log("Yargs",yargs.argv);
+//console.log("Yargs",yargs.argv);
 
 
-
-var command = process.argv[2];
 const arguments = yargs.argv;
+var command = arguments._[0];
+
+console.log("Command - " + command)
 
 if (command === 'add'){
-    console.log("Adding...");
-    notes.addNote(arguments.title, arguments.body);
+    //console.log("Adding...");
+    var newNote = notes.addNote(arguments.title, arguments.body);
 } else if (command === 'list') {
     notes.getAll();
 } else if (command === 'read') {
     notes.readNote(arguments.noteid)
 } else if (command === 'delete') {
-    notes.deleteNote(arguments.noteid);
+    var isDeleted = notes.deleteNote(arguments.title);
+    var message = isDeleted ? "Note deleted" : "Title not found";
+    console.log(message);
 } else {
     console.log("Command not recognized.");
 }
