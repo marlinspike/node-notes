@@ -1,0 +1,29 @@
+{
+  "name": "notes",
+  "version": "1.0.0",
+  "description": "A list of notes written in node",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Reuben Cleetus",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "yargs": "^4.7.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marlinspike/node-notes.git"
+  },
+  "keywords": [
+    "notes",
+    "node",
+    "marlinspike"
+  ],
+  "bugs": {
+    "url": "https://github.com/marlinspike/node-notes/issues"
+  },
+  "homepage": "https://github.com/marlinspike/node-notes#readme"
+}
