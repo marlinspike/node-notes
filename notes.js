@@ -44,8 +44,12 @@ var getAll = () => {
     console.log("Getting All Notes... ");
 };
 
-var readNote = (noteId) => {
-    console.log("Reading note # ", noteId)
+//Read note by TITLE
+var readNote = (noteTitle) => {
+    //Load current notes
+    notes = fetchNotesFromFile();
+    var selectedNote = notes.filter((note) => note.title === noteTitle);
+    return selectedNote[0];
 };
 
 //Delete note by title
@@ -56,9 +60,18 @@ var deleteNote = (noteTitle) => {
     return notes.length !== filteredNotes.length;
 };
 
+var logNote = (note) => {
+    if(note){
+        console.log("---");
+        console.log(`Title: ${note.title}`);
+        console.log(`Body: ${note.body}`);
+    }
+};
+
 module.exports = {
     addNote,
     getAll,
     readNote,
-    deleteNote
+    deleteNote,
+    logNote
 }

@@ -12,19 +12,28 @@ const notes = require('./notes.js');
 const arguments = yargs.argv;
 var command = arguments._[0];
 
-console.log("Command - " + command)
+console.log(`Command - ${_.toUpper(command)}`);
 
 if (command === 'add'){
-    //console.log("Adding...");
     var newNote = notes.addNote(arguments.title, arguments.body);
+    notes.logNote(newNote);
+
 } else if (command === 'list') {
     notes.getAll();
+
 } else if (command === 'read') {
-    notes.readNote(arguments.noteid)
+    var note = notes.readNote(arguments.title)
+    if (note){
+        notes.logNote(note);
+    } else{
+        console.log("Note not found.")
+    }
+
 } else if (command === 'delete') {
     var isDeleted = notes.deleteNote(arguments.title);
     var message = isDeleted ? "Note deleted" : "Title not found";
     console.log(message);
+
 } else {
     console.log("Command not recognized.");
 }
